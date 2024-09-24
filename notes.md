@@ -26,12 +26,16 @@ MyDelegate f = MyFunc;
 f(10, "hello");
 ```
 
+### Anonymous Delegates
+
 _anonymous delegate_ - a small inline delegate that uses the `delegate` keyword instead of having to write a function name.
 
 ```C#
 // anonymous delegate
 MyDelegate f = delegate(int a) {...};
 ```
+
+### Composable Delegates
 
 _composable delegates_ - you can chain delegates together and each one will be called in the order in which it was added to the chain. 
 
