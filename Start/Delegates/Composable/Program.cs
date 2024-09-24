@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Composable
 {
@@ -33,10 +34,13 @@ namespace Composable
             f2(a, b);
             // TODO: Call the composed delegate
             Console.WriteLine("\nCalling the chained delegates");
-
+            MyDelegate f = f1 + f2;
+            f(a, b);
 
             // TODO: subtract off one of the delegates
             Console.WriteLine("\nCalling the unchained delegates");
+            f -= f2;
+            f(a, b);
 
         }
     }
