@@ -29,7 +29,10 @@ namespace LambdaDelegates
 
             // TODO: Use a Lambda expression to define an event handler
             // Note that this is a statement lambda, due to use of { }
-
+            obj.valueChanged += (v) => 
+            {
+                Console.WriteLine($"The value changed to: {v}");
+            };
 
             string str;
             do {

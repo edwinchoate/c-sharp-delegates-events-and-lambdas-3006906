@@ -161,3 +161,10 @@ when you're raising the event,
 eventHandler(this, new MyEventArgs() { data = "hello" });
 ```
 
+
+
+Using an anonymous lambda function to listen to an event:
+
+```C#
+obj.eventHandler += (x, y) => {...};
+```
