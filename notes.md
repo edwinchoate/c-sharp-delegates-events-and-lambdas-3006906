@@ -63,8 +63,8 @@ f3(5, "hi");
 You can use `+=` and `-=` to add and remove delegates from the call chain.
 
 ```C#
-MyDelegate += f4; // adds another delegate to the chain
-MyDelegate -= f1; // removes a delegate from the chain
+all += f4; // adds another delegate to the chain
+all -= f1; // removes a delegate from the chain
 ```
 
 * If an exception is thrown by a delegate in the calling chain, and the exception isn't handled within that delegate, then the delegate chain will be broken and all the remaining delegates in the chain will be skipped. 
@@ -123,3 +123,41 @@ void Main (string[] args)
 	obj.myEvent += delegate (int i) {...}
 }
 ```
+
+### .NET Event Guidelines
+
+The .NET Framework structures events with `sender` and `EventArgs` objects.
+
+* `sender` is the object where the event originated
+* `EventArgs e` contains data about the event 
+
+```C#
+public delegate void EventHandler (object sender, EventArgs e);
+```
+
+you define the event args with a subclass
+
+```C#
+class MyEventArgs : EventArgs
+{
+	public string data;
+}
+```
+
+you use generics to associate the EventArgs subclass with the event delegate. 
+
+```C#
+public event EventHandler<MyEventArgs> eventHandler;
+```
+
+Note: [`EventHandler`](https://learn.microsoft.com/en-us/dotnet/api/system.eventhandler?view=net-8.0) is not an arbitrary name, it is the .NET delegate to use.
+
+when you're raising the event, 
+
+* You can use `this` to easily identify the object raising the event
+* You create a new `EventArgs` object to pass in the data
+
+```C#
+eventHandler(this, new MyEventArgs() { data = "hello" });
+```
+
