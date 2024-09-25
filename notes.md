@@ -12,7 +12,7 @@ _events_ - a way to broadcast and receive messages throughout an app or across a
 
 _lambas_ - functionally the same as delegates but written in a more concise syntax. 
 
-## Ch. 2
+## Ch. 2 - Delegates
 
 `delegate` keyword
 
@@ -86,4 +86,40 @@ calc(ref a);
 
 Console.WriteLine(a.ToString());
 // Prints '105'
+```
+
+## Ch. 3 - Events
+
+* Based on delegates
+* Asynchronous
+* Can be switched on and off
+
+Defining an event:
+
+```C#
+// you use delegates to define the structure of events
+public delegate void MyEventHandler(int i);
+
+class MyClass 
+{
+	// you use the `event` keyword to create the event
+	public event MyEventHandler myEvent;
+
+	public void RaiseEvent () 
+	{
+		// you raise events by calling them like a function
+		myEvent(123);
+	}
+}
+```
+
+Listening for an event:
+
+```C#
+void Main (string[] args) 
+{
+	MyClass obj = new MyClass();
+
+	obj.myEvent += delegate (int i) {...}
+}
 ```
