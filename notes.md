@@ -161,3 +161,14 @@ when you're raising the event,
 eventHandler(this, new MyEventArgs() { data = "hello" });
 ```
 
+### Naming Conventions
+
+* Use the suffix `EventHandler` for delegates.
+* Use the suffix `EventArgs` for subclasses of `EventArgs`.
+* Use params `object sender` and `EventArgs e`.
+
+Example: 
+
+```C#
+public delegate void ClickedEventHandler (object sender, ClickedEventArgs e);
+```
