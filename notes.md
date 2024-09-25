@@ -172,3 +172,33 @@ Example:
 ```C#
 public delegate void ClickedEventHandler (object sender, ClickedEventArgs e);
 ```
+
+## Ch. 4 - Lambda Functions
+
+* A shorthand way of writing anonymous functions in C#.
+* Based on delegates, usable anywhere where you can use delegates. 
+* Small and compact. Useful for inline code. 
+* Use the `=>` operator 
+
+```C#
+// define delegate the normal way 
+public delegate int MyDelegate (int i);
+
+// use `=>` operator to write an inline anonymous delegate 
+MyDelegate f = x => x * x;
+```
+
+### Expression Lambdas
+
+```C#
+MyDelegate f = x => x * x; // Notice, `x * x` is not a full statement.
+```
+
+### Statement Lambdas
+
+```C#
+(x, y) => {
+	f1(x); // Notice, `f1(x);` is a full statement.
+	f2(y);
+}
+```
